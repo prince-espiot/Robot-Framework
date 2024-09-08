@@ -3,6 +3,7 @@ Library           SeleniumLibrary
 
 *** Variables ***
 ${url}            https://github.com/login
+@{CREDENTIALS}    prince-espiot    
 
 *** Test Cases ***
 test1
@@ -12,7 +13,7 @@ test1
 Login test
     [Tags]    login
     Open Browser    ${url}    edge
-    Input Text    id=login_field    prince-espiot
-    Input Password    id=password    Kista123@
+    Input Text    id=login_field    @{CREDENTIALS}[0]
+    Input Password    id=password    @{CREDENTIALS}[1]
     Click Element    css=input[type='submit'].js-sign-in-button
     Close Browser
