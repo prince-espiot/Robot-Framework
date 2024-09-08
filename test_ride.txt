@@ -1,0 +1,14 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Test Cases ***
+test1
+    SeleniumLibrary.Open Browser    https://robotframework.org/    edge
+    Log To Console    Completed successfully
+
+Login test
+    Open Browser    https://github.com/login    edge
+    Input Text    id=login_field    prince-espiot
+    Input Password    id=password    Kista123@
+    Click Element    css=input[type='submit'].js-sign-in-button
+
