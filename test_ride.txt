@@ -1,0 +1,35 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Variables ***
+${url}            https://github.com/login
+@{CREDENTIALS}    prince-espiot    Kista123@
+&{LOGIN}          Username=prince-espiot    Password=Kista123@
+
+*** Test Cases ***
+test1
+    Open Browser    https://robotframework.org/    chrome
+    Log To Console    Completed successfully
+    Close Browser
+
+Login test
+    [Tags]    login
+    Open Browser    ${url}    edge
+    Input Text    id=login_field    ${LOGIN["Username"]}
+    Input Password    id=password    ${LOGIN["Password"]}
+    Click Element    css=input[type='submit'].js-sign-in-button
+    Close Browser
+    Log To Console    %{username} ran this test on %{os}
+
+test with userkw
+    [Tags]    test3
+    Open Browser    ${url}    edge
+    Login
+
+*** Keywords ***
+Login
+    [Arguments]    &{arg2}
+    Input Text    id=login_field    ${LOGIN["Username"]}
+    Input Password    id=password    Kista123@
+    Click Button    css=input[type='submit'].js-sign-in-button
+    Close Browser
